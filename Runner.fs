@@ -9,7 +9,6 @@ module Runner =
   open Automation
 
   module private Internals =
-    let year = AppDomain.CurrentDomain.FriendlyName.Replace("aoc", "") |> int
     let maxDay = 25
     let maxPart = 2
 
@@ -75,10 +74,12 @@ module Runner =
 
         if input <> "" then
           let expected = args[1].ToString()
+
           let lines =
             input.Split("\n")
             |> Array.map (fun (x: String) -> x.Trim())
             |> Array.filter (fun (x: String) -> x <> "")
+
           let result = run.Invoke(lines)
 
           if result <> expected then
@@ -90,7 +91,7 @@ module Runner =
     let runPart (part: Part) =
       printfn $"\nDay {part.Day}, Part {part.Part}"
 
-      let input = ensureInput year part.Day
+      let input = ensureInput Env.Year part.Day
 
       runExamples (part.Run, part.Ex)
 
