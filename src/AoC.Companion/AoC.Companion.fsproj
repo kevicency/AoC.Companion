@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>5e2624a9-8850-4f3c-807c-14c4fd6b532b</UserSecretsId>
+    <Version>0.0.4</Version>
+    <Title>AoC.Companion</Title>
+    <Authors>Kevin Mees &lt;kev.mees@gmail.com&gt;</Authors>
+    <RepositoryUrl>https://github.com/kevicency/AoC.Companion</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="String.fs"/>
+    <Compile Include="Env.fs"/>
+    <Compile Include="Submissions.fs"/>
+    <Compile Include="Automation.fs"/>
+    <Compile Include="Option.fs"/>
+    <Compile Include="Runner.fs"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Json" Version="0.4.1"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0"/>
+    <PackageReference Update="FSharp.Core" Version="8.0.100"/>
+    <PackageReference Include="MinVer" Version="4.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

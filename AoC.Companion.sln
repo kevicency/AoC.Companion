@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AoC.Companion", "AoC.Companion.fsproj", "{9572DFE1-8D7C-4417-88CA-CF5038FC954B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AoC.Companion", "src/AoC.Companion/AoC.Companion.fsproj", "{9572DFE1-8D7C-4417-88CA-CF5038FC954B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "AoC.Companion.Ex2019", "src\AoC.Companion.Ex2019\AoC.Companion.Ex2019.fsproj", "{0159B7AE-A6A2-4C05-AF12-AF5C2E6B2CCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{9572DFE1-8D7C-4417-88CA-CF5038FC954B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9572DFE1-8D7C-4417-88CA-CF5038FC954B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9572DFE1-8D7C-4417-88CA-CF5038FC954B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0159B7AE-A6A2-4C05-AF12-AF5C2E6B2CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0159B7AE-A6A2-4C05-AF12-AF5C2E6B2CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0159B7AE-A6A2-4C05-AF12-AF5C2E6B2CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0159B7AE-A6A2-4C05-AF12-AF5C2E6B2CCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

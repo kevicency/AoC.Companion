@@ -15,7 +15,11 @@ module Automation =
       failwith "AOC_SESSION_TOKEN not found in user secrets"
 
     client.DefaultRequestHeaders.Add("Cookie", $"session={Env.SessionToken}")
-    client.DefaultRequestHeaders.UserAgent.ParseAdd(".NET (+via https://github.com/kevicency/AoC.Companion by kev.mees@gmail.com)")
+
+    client.DefaultRequestHeaders.UserAgent.ParseAdd(
+      ".NET (+via https://github.com/kevicency/AoC.Companion by kev.mees@gmail.com)"
+    )
+
     client.BaseAddress <- Uri "https://adventofcode.com"
     client
 
@@ -33,8 +37,17 @@ module Automation =
         return ""
     }
 
+  let ensureInputDir () =
+    let inputDir = Path.Join(Env.ProjectDir, "input")
+
+    if not (Directory.Exists inputDir) then
+      Directory.CreateDirectory inputDir |> ignore
+
+    inputDir
+
   let ensureInput (year: int) (day: int) =
-    let inputPath = Path.Join(Env.ProjectDir, $"input/Day%02d{day}.txt")
+    let inputDir = ensureInputDir ()
+    let inputPath = Path.Join(inputDir, $"Day%02d{day}.txt")
 
     if not (File.Exists inputPath) then
       let input = fetchInput year day |> Async.RunSynchronously

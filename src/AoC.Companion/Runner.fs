@@ -77,13 +77,7 @@ module Runner =
 
         if input.Trim() <> "" then
           let expected = args.[1].ToString().Trim()
-
-          let lines =
-            input.Split("\n")
-            |> Array.map (fun (x: String) -> x.Trim())
-            |> Array.filter (fun (x: String) -> x <> "")
-
-          let result = run.Invoke(lines)
+          let result = run.Invoke(input |> String.splitLines)
 
           if result <> expected then
             printfn $"FAILED"
