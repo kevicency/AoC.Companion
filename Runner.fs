@@ -8,12 +8,15 @@ module Runner =
   open Microsoft.FSharp.Core
   open Automation
 
+  type Example = string * string
+  type Examples = Example list
+
   module private Internals =
     let maxDay = 25
     let maxPart = 2
 
     type DRun = delegate of string[] -> string
-    type DEx = delegate of unit -> obj[] list
+    type DEx = delegate of unit -> Examples
 
     type Part =
       { Day: int
@@ -32,7 +35,7 @@ module Runner =
               |> Option.ofObj
 
             let invoke (args: obj) =
-              methodInfo.Invoke(null, [| args |]).ToString()
+              methodInfo.Invoke(null, [| args |]).ToString().Trim()
 
             return invoke
           }
@@ -70,11 +73,9 @@ module Runner =
 
       examples
       |> List.iter (fun (args) ->
-        let input = args[0].ToString()
+        let (input, expected) = args
 
-        if input <> "" then
-          let expected = args[1].ToString()
-
+        if input.Trim() <> "" then
           let lines =
             input.Split("\n")
             |> Array.map (fun (x: String) -> x.Trim())
@@ -82,7 +83,7 @@ module Runner =
 
           let result = run.Invoke(lines)
 
-          if result <> expected then
+          if result <> expected.Trim() then
             printfn $"FAILED"
             failwith $"Example failed.\n> Expected: {expected}\n> Result:   {result}")
 
