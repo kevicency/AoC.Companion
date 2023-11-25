@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <UserSecretsId>5e2624a9-8850-4f3c-807c-14c4fd6b532b</UserSecretsId>
-        <Version>0.0.3</Version>
+        <Version>0.0.4</Version>
         <Title>AoC.Companion</Title>
         <Authors>Kevin Mees &lt;kev.mees@gmail.com&gt;</Authors>
         <RepositoryUrl>https://github.com/kevicency/AoC.Companion</RepositoryUrl>
