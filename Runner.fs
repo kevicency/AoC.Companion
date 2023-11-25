@@ -8,15 +8,12 @@ module Runner =
   open Microsoft.FSharp.Core
   open Automation
 
-  type Example = string * string
-  type Examples = Example list
-
   module private Internals =
     let maxDay = 25
     let maxPart = 2
 
     type DRun = delegate of string[] -> string
-    type DEx = delegate of unit -> Examples
+    type DEx = delegate of unit -> obj[] list
 
     type Part =
       { Day: int
@@ -73,9 +70,14 @@ module Runner =
 
       examples
       |> List.iter (fun (args) ->
-        let (input, expected) = args
+        if (args.Length <> 2) then
+          failwith $"Example must have 2 entries [input, expected]."
+
+        let input = args.[0].ToString().Trim()
 
         if input.Trim() <> "" then
+          let expected = args.[1].ToString().Trim()
+
           let lines =
             input.Split("\n")
             |> Array.map (fun (x: String) -> x.Trim())
@@ -83,7 +85,7 @@ module Runner =
 
           let result = run.Invoke(lines)
 
-          if result <> expected.Trim() then
+          if result <> expected then
             printfn $"FAILED"
             failwith $"Example failed.\n> Expected: {expected}\n> Result:   {result}")
 
